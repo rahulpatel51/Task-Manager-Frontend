@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow Pro - Real-time Task Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="app-header">
+            <h1>
+                <i class="fas fa-tasks"></i>
+                TaskFlow Pro
+            </h1>
+            <p class="subtitle">Real-time task management with live updates</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-list"></i>
+                <h3>Total Tasks</h3>
+                <div class="stat-number" id="totalTasks">0</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <h3>Pending</h3>
+                <div class="stat-number" id="pendingTasks">0</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle"></i>
+                <h3>Completed</h3>
+                <div class="stat-number" id="completedTasks">0</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Completion Rate</h3>
+                <div class="stat-number" id="completionRate">0%</div>
+            </div>
+        </div>
+
+        <div class="task-input-section">
+            <div class="input-group">
+                <input type="text" id="taskInput" placeholder="Add a new task... (use [high], [medium], [low] for priority)">
+                <button class="btn btn-primary" id="addTaskBtn">
+                    <i class="fas fa-plus"></i> Add Task
+                </button>
+                <button class="btn btn-danger" id="clearAllTasksBtn">
+                    <i class="fas fa-trash"></i> Clear All
+                </button>
+            </div>
+            <div class="priority-hint">
+                💡 Tip: Add [high], [medium], or [low] to set priority (e.g., "Important task [high]")
+            </div>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All Tasks</button>
+            <button class="filter-btn" data-filter="pending">Pending</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <div class="task-list">
+            <ul id="taskList" style="list-style: none;"></ul>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
